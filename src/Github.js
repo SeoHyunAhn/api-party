@@ -5,15 +5,21 @@ class Github extends Component {
     state = {
         username: '',
     }
-handlechange = (ev) =>{
-    this.setState({username: ev.target.value})
-}
+    handlechange = (ev) =>{
+        this.setState({username: ev.target.value})
+    }
+    handelSubmit = (ev) =>{
+        ev.preventDefault()
+        this.props.history.push(`/github/${this.state.username}`)
+        this.setState({username: ''})
+    }
 
     render (){
         return (
             <div className="Github">
-                <img src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png" alt ="Github"/>
-                <form>
+                <img className="logo"
+                src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png" alt ="Github"/>
+                <form onSubmit={this.handelSubmit}>
                     <div>
                         <input 
                         type="text"
